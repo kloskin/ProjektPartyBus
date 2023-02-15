@@ -14,7 +14,6 @@
 <h1>@Model.RentCategory.categoryName</h1>
 
 <h5>@Model.RentCategory.description</h5>
-<h5>@marek</h5>
 <div class="container">
 
     <table class="table table-striped">
@@ -28,7 +27,7 @@
                 @if (SignInManager.IsSignedIn(User))
                 {
                     
-                    <th>Choose</th>
+                    <th>Rent</th>
                 }         
             </tr>
         </thead>
@@ -50,7 +49,7 @@
                     @if (SignInManager.IsSignedIn(User))
                     {
                         <td>
-                            <a class="btn btn-success" asp-controller="Rental" asp-action="RentForm" asp-route-busID="@category.busID" asp-route-categoryID="@Model.RentCategory.typeID" asp-route-rentalID="@marek" title="Choose">Choose</a>
+                            <a class="btn btn-success" asp-controller="Rental" asp-action="RentForm" asp-route-busID="@category.busID" asp-route-categoryID="@Model.RentCategory.typeID" asp-route-rentalID="@marek" title="Choose">Rent</a>
                         </td>
                     }
                 </tr>

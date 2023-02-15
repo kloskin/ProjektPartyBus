@@ -11,7 +11,7 @@ namespace UserManagement.MVC.Models
 {
     public class ReviewDataAccessLayer
     {
-        string connectionString = "Server=localhost\\SQLEXPRESS;Database=PartyBusTESTY;Trusted_Connection=True;";
+        string connectionString = "Server=localhost\\SQLEXPRESS;Database=PartyBus;Trusted_Connection=True;";
         public IEnumerable<Review> GetAllReviews(int busID)
         {
             List<Review> listReviews = new List<Review>();

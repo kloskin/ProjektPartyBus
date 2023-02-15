@@ -19,7 +19,7 @@
                 <th>id</th>
                 <th>Model</th>
                 <th>Max People</th>
-                <th>Price for hour</th>
+                <th>Pickup Location</th>
             </tr>
         </thead>
         <tbody>
@@ -30,18 +30,20 @@
                 {
                     <tr>
                         <td>@rental.rentID</td>
-                        <td>
-                            @foreach (var bus in Model.BusList)
+
+                        @foreach (var bus in Model.BusList)
+                        {
+                            @if (rental.busID == bus.busID)
                             {
-                                @if (rental.busID == bus.busID){
-                                    @bus.model
-                                    break;
-                                }
-                                    
+                                <td> @bus.model</td>
+                                <td>@bus.maxPeople</td>
+
+                                break;
                             }
-                        </td>
-                        <td>@rental.busID</td>
-                        <td>@rental.typeID</td>                    
+
+                        }
+                        <td>@rental.pickupLocation</td>
+
                     </tr>
                 }
             }

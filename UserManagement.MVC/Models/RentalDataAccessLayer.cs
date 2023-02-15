@@ -8,7 +8,7 @@ namespace UserManagement.MVC.Models
 {
     public class RentalDataAccessLayer
     {
-        string connectionString = "Server=localhost\\SQLEXPRESS;Database=PartyBusTESTY;Trusted_Connection=True;";
+        string connectionString = "Server=localhost\\SQLEXPRESS;Database=PartyBus;Trusted_Connection=True;";
         public IEnumerable<Rental> GetAllRental()
         {
             List<Rental> listRental = new List<Rental>();

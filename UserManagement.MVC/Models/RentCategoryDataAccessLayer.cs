@@ -11,7 +11,7 @@ namespace UserManagement.MVC.Models
     public class RentCategoryDataAccessLayer
     {
 
-        string connectionString = "Server=localhost\\SQLEXPRESS;Database=PartyBusTESTY;Trusted_Connection=True;";
+        string connectionString = "Server=localhost\\SQLEXPRESS;Database=PartyBus;Trusted_Connection=True;";
         public IEnumerable<RentCategory> GetAllCategory()
         {
             List<RentCategory> listCategory = new List<RentCategory>();

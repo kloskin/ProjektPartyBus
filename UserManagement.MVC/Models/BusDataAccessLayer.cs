@@ -10,7 +10,7 @@ namespace UserManagement.MVC.Models
 {
     public class BusDataAccessLayer
     {
-        string connectionString = "Server=localhost\\SQLEXPRESS;Database=PartyBusTESTY;Trusted_Connection=True;";
+        string connectionString = "Server=localhost\\SQLEXPRESS;Database=PartyBus;Trusted_Connection=True;";
         public IEnumerable<Bus> GetAllBuses()
         {
             List<Bus> listBuses = new List<Bus>();
