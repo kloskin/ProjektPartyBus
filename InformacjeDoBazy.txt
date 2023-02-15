@@ -1,0 +1,1 @@
+tworzyliśmy naszą baze w Microsoft SQL Server Express więc możliwe że trzeba zmienić connectionString żeby działało 
