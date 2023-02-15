@@ -1,0 +1,52 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@model RentalModel
+@{
+    ViewData["Title"] = "BusCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@Model.RentCategory.categoryName</h1>
+
+<h5>@Model.RentCategory.description</h5>
+<div class="container">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Model</th>
+                <th>Max People</th>
+                <th>Price for hour</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var rental in Model.RentalList)
+            {
+                @if (SignInManager.UserManager.GetUserId(User) == rental.userID)
+                {
+                    <tr>
+                        <td>@rental.rentID</td>
+                        <td>
+                            @foreach (var bus in Model.BusList)
+                            {
+                                @if (rental.busID == bus.busID){
+                                    @bus.model
+                                    break;
+                                }
+                                    
+                            }
+                        </td>
+                        <td>@rental.busID</td>
+                        <td>@rental.typeID</td>                    
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>
+

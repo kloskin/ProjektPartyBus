@@ -1,0 +1,19 @@
+﻿@model IEnumerable<UserManagement.MVC.Models.Bus>
+@{
+    ViewData["Title"] = "Add Buses";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+<h1>Add Buses</h1>
+<form name="buses" method="post" asp-action="AddBus" asp-controller="Bus">
+    <div class="input-group">
+
+        <input name="model" class="form-control w-25" placeholder="bus Model" required>
+        <input name="hourPrice" class="form-control w-25" placeholder="Price multipliers" required>
+        <input name="maxPeople" class="form-control w-25" placeholder="Max people" required> 
+        <span class="input-group-btn">
+            <button type="submit" class="btn btn-info">Add new bus</button>
+        </span>
+    </div>
+</form>

@@ -1,0 +1,63 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@model UserManagement.MVC.Models.CategoryBusModel
+@{
+    ViewData["Title"] = "BusCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string marek = SignInManager.UserManager.GetUserId(User);
+
+}
+
+<h1>@Model.RentCategory.categoryName</h1>
+
+<h5>@Model.RentCategory.description</h5>
+<h5>@marek</h5>
+<div class="container">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Model</th>
+                <th>Max People</th>
+                <th>Price for hour</th>
+                <th>Reviews</th>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    
+                    <th>Choose</th>
+                }         
+            </tr>
+        </thead>
+        <tbody>
+            
+            @foreach (var category in Model.Bus)
+            {
+                float price = category.hourPrice*Model.RentCategory.priceForHour;
+
+                <tr>
+                    <td>@category.busID</td>
+                    <td>@category.model</td>
+                    <td>@category.maxPeople</td>
+                    <td>@price zł</td>
+
+                    <td>
+                        <a class="btn btn-info" asp-controller="Bus" asp-action="ViewBus" asp-route-id="@category.busID" title="Reviews">Reviews</a>
+                    </td>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <td>
+                            <a class="btn btn-success" asp-controller="Rental" asp-action="RentForm" asp-route-busID="@category.busID" asp-route-categoryID="@Model.RentCategory.typeID" asp-route-rentalID="@marek" title="Choose">Choose</a>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+</div>

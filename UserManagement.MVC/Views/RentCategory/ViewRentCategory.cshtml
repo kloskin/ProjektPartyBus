@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@model UserManagement.MVC.Models.CategoryReviewsModel
+@{
+    ViewData["Title"] = "Reviews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@Model.RentCategory.categoryName</h1>
+<div></div>
+<div class="my-4">
+    <div>Comment Section:</div> 
+    <div>
+        @if (SignInManager.IsSignedIn(User))
+        {
+        <form method="post" asp-action="AddReview" asp-controller="Review">  
+            <div>
+                <input type="hidden" name="userId" value="@UserManager.GetUserAsync(User).Result.Id"/>
+                <input type="hidden" name="restaurantId" value="@Model.RentCategory.typeID"/>
+                <textarea cols="5" rows="3" name="comment" class="form-control" placeholder="Your opinion"></textarea>
+                <button type="submit" class="btn btn-info">Add Review</button>
+            </div>
+        </form>
+        }
+    </div>
+    <hr />
+    <div>
+        @foreach (var review in Model.Reviews)
+        {
+            <div class="card card-body">
+                <div class="font-weight-bold">@review.User</div>
+                <div>@review.Comment</div>
+                @if(SignInManager.IsSignedIn(User) && (UserManager.GetUserAsync(User).Result.Id == review.UserId))
+                {
+                    <div class="text-right">
+                        <a class="btn btn-sm btn-danger" asp-controller="Review" asp-action="DeleteReview" asp-route-id="@review.Id" asp-route-restaurant="@Model.RentCategory.typeID">Usuń komentarz</a>
+                        </div>
+                }
+            </div>
+        }
+    </div>
+</div>

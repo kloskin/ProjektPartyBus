@@ -1,0 +1,28 @@
+﻿@model CategoryBuses
+@{
+    ViewData["Title"] = "Categories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Name</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model.RentCategories)
+        {
+            <tr>
+                <td>@category.typeID</td>
+                <td>@category.categoryName</td>
+                <td>
+                    <a class="btn btn-danger" asp-controller="RentCategory" asp-action="DeleteRestaurant" asp-route-id="@category.typeID" title="Delete">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

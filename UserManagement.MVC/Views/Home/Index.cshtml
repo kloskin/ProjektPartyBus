@@ -1,0 +1,31 @@
+﻿@model IEnumerable<UserManagement.MVC.Models.RentCategory>
+@{
+    ViewData["Title"] = "Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 1;
+
+}
+
+<div class="my-4">
+    <div class="row">
+        <h1 class="col-4">Categories</h1>
+        <h1 class="col-8">Description</h1>
+    </div>
+</div>
+<div class="container">
+
+    @foreach (var category in Model)
+    {     
+        <a asp-controller="RentCategory" asp-action="BusCategory" asp-route-id="@category.typeID" asp-route-price="@category.priceForHour">
+        <div class="card card-body my-4">
+            <div class="row">
+                    <h2 class="col-4">Level @i: @category.categoryName</h2>
+                    <h4 class="col-8 text-dark align-middle">@category.description</h4>
+            </div>
+        </div>
+    </a>
+    i++;
+    }
+</div>
+
+

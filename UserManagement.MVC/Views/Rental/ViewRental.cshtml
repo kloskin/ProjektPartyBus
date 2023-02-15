@@ -1,0 +1,33 @@
+﻿@model RentalModel
+@{
+    ViewData["Title"] = "Your Rentals";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Add Buses</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Pickup Location</th>
+            <th>busID</th>
+            <th>userID</th>
+            <th>Email</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var rental in Model.RentalList)
+        {
+            <tr>
+                <td>@rental.rentID</td>
+                <td>@rental.pickupLocation</td>
+                <td>@rental.busID</td>
+                <td>@rental.userID</td>
+                <td>
+                    <a class="btn btn-danger" asp-controller="Restaurant" asp-action="DeleteRestaurant" asp-route-id="@rental.rentID" title="Delete">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
